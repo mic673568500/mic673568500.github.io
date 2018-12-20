@@ -1,5 +1,5 @@
 
 # Mic Wiki Says Hello World
 
-[Effective Lua](/effective_lua/index.md)
-[Contributor](/contributor.md)
+* [Effective Lua](/effective_lua/index.md)
+* [Contributor](/contributor.md)
