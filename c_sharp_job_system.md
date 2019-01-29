@@ -42,7 +42,7 @@ Job需要实现Eexcute方法。
 
 
 IJob.Schedule只能在主线程里调用，表示把job放入job系统的队列，一旦开始，不可打断。
-'''
+```
 // Create a native array of a single float to store the result. This example waits for the job to complete for illustration purposes
 NativeArray<float> result = new NativeArray<float>(1, Allocator.TempJob);
 
@@ -63,7 +63,7 @@ float aPlusB = result[0];
 
 // Free the memory allocated by the result array
 result.Dispose();
-'''
+```
 
 可以使用JobHandle.CombineDependencies将多个依赖的句柄合为一个句柄。
 JobHandle.Complete可以立刻执行这个job，之后主线程可以安全访问NativeContainer了。
@@ -74,7 +74,7 @@ ParallelFor把自己的数据分批，然后交给内部的job，由再由job系
 调用ParallelFor.Schedule时，你需要指定数组长度和分批的个数。指定数组长度是因为有可能有多个成员是数组，job系统不知道用哪一个决定长度。分批个数帮助你试验出最优的性能。
 
 
-'''
+```
 NativeArray<float> a = new NativeArray<float>(2, Allocator.TempJob);
 
 NativeArray<float> b = new NativeArray<float>(2, Allocator.TempJob);
@@ -101,7 +101,7 @@ handle.Complete();
 a.Dispose();
 b.Dispose();
 result.Dispose();
-'''
+```
 ParallelForTransform是针对Transforms操作的一种ParallelFor类型。
 
 不要直接更新NativeContainer的内容，需要拷出来再赋值回去。
