@@ -23,3 +23,4 @@ platform invoke返回的结构必须是blittable类型。
 formatted value（格式化类型）是一个显示控制其成员在内存中布局的复杂类型。
 
 对象的引用，不是blittable类型。
+bool，不是blittable类型。
