@@ -102,3 +102,5 @@ static IEnumerable<int> EvenNumbersOnly (IEnumerable<int> sequence)
             yield return x;
 }
 ```
+
+泛型容器的好处是防止了其他版本存在的值类型的装箱操作，并且有强类型检查。
