@@ -1,0 +1,32 @@
+AssetBundle包含了平台相关的资产。
+一个bundle里的资源可能依赖另一个bundle里的资源。
+bundle可选压缩，内建算法LZMA或LZ4。
+bundle可以做dlc，可以减少初始安装大小，降低运行时内存压力
+AssetBundle可以指磁盘上的bundle文档
+AssetBundle可以指代码中的对象
+
+打AssetBundles可以有以下策略：
+逻辑实体分组，比如：
+把UI的纹理和布局数据打在一起；
+把角色的模型和动画打在一起；
+把多场景使用的模型和纹理打在一起；
+
+逻辑实体分组适合dlc的情形了，问题就是负责分配的人员需要准确知道每个资产何时使用；
+
+类型分组策略，比如：
+将音频打在一起，将shader打在一起
+类型分组策略适合多平台的情形，比如，如果音频的压缩格式在windows上和mac上是一致的，那么只需要打同一个即可；shader可能不行；而texture因为在不同版本的压缩格式几乎不变，打出的包可以跨版本使用。
+
+小贴士：
+把经常需要更新的物体和不经常需要改变的物体分开打
+更有可能同时加载的物体打在一起：比如模型，它的纹理和它的动画；
+如果多个包中的资产依赖另一个不同的包中的资产，把依赖项放到单独的包中
+如果两个物体不可能同时加载，例如标准资产和高清资产，不要打在一起
+如果少于50%的内容是频繁同时加载的，考虑拆分
+如果小包（5-10个资产）经常同时加载，考虑合并它们
+如果一堆物体只是同一个物体的不同版本，考虑使用 variant
+
+
+BuildAssetBundleOptions.None使用LZMA格式压缩，产生最小的尺寸和最长的载入时间，并且使用时要解压整个包，解压后，使用LZ4重新压缩到硬盘上，并且使用时不需要全部解压了。所以这个最好用在所有资产都同时使用的情况。LZMA格式压缩最好只用在最初下载包的时候。通过 UnityWebRequestAssetBundle加载包会自动重新用LZ4压缩到硬盘上。如果你用其他方式下载包体，可以使用AssetBundle.RecompressAssetBundleAsync重新压缩。
+BuildAssetBundleOptions.UncompressedAssetBundle就是不压缩。
+BuildAssetBundleOptions.ChunkBasedCompression使用的LZ4，压缩后比LZMA大，但是可以部分解压。
