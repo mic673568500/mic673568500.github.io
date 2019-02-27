@@ -88,7 +88,6 @@ PSD
 
 ![8](hero_design/8.jpg)
 
-![9](hero_design/9.jpg)
 
 
 
