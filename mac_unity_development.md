@@ -33,6 +33,9 @@ unity2018要求jdk在8以下
 ### ndk
 开启il2cpp需要，unity2018要求是r13b版本
 
+### js node
+访问google doc数据表
+
 ## 好用的工具
 ### iTeam
 ### brew

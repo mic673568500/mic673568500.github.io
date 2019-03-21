@@ -114,7 +114,7 @@ IEnumerator InstantiateObject()
 ```
 
 Loading AssetBundle Manifests
-加载那个额外的assetbundle，加载AssetBundleManifest类型的对象，即可。
+想要加载那个额外的assetbundle，加载AssetBundleManifest类型的对象，即可。
 
 ```
 AssetBundle assetBundle = AssetBundle.LoadFromFile(manifestFilePath);
