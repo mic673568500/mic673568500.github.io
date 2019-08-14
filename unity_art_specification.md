@@ -10,7 +10,7 @@
 - scene设置：游戏运行的scene，和美术检查效果的scene，要同步。包括（prefab，meta，light setting）等。
 
 
-## 光照相关设置
+## 光照相关规划
 1. 每房间摆放光源
 2. 最多一个实时像素光源，可尝试加最多4个实时顶点光源作为辅光，设置环境光
 - *原因：base pass：一个像素光，4个顶点光，其他sh光，光照贴图，环境光，自发光；前向渲染默认只有base pass 的方向光有影子，除非开 multi_compile_fwdadd_fullshadows；其他pass：其他每个像素光一个pass*
